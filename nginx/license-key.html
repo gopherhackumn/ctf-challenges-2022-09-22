@@ -86,12 +86,14 @@
         if (pieces.length != 3) return false;
 
         const first = pieces[0];
+        if (first.length != 3) return false;
         for (let x = 0; x < first.length; x++) {
           const y = first.charCodeAt(x);
           if (y != 89 + 30 * x - 8 * x * x) return false;
         }
 
         const second = pieces[1];
+        if (second.length != 3) return false;
         if (second.charCodeAt(0) - first.charCodeAt(0) != 14) return false;
         if (second.charCodeAt(1) != first.charCodeAt(1)) return false;
         if (second.charCodeAt(2) - first.charCodeAt(2) != -1) return false;
