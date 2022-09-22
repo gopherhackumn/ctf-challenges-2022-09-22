@@ -5,16 +5,16 @@ flag = "gopher{it's_about_time}"
 
 def check(s):
     if len(s) != len(flag):
-        print("wrong length", flush=True)
+        print("wrong", flush=True)
         return
 
+    time.sleep(0.5)
+
     for c in range(min(len(s), len(flag))):
-        if c < 3 and flag[c] == s[c]:
-            time.sleep(1)
         if flag[c] == s[c]:
-            time.sleep(0.3)
+            time.sleep(0.5)
         else:
-            print("wrong flag", flush=True)
+            print("wrong", flush=True)
             return
 
     print("correct", flush=True)
