@@ -1,5 +1,8 @@
 name,description,category,value,type,state,max_attempts,flags,tags,hints,type_data
 Caesar Cipher,"Solve this cipher! `aijbyl{Vynnyl_hin_myhx_mnuny_mywlynm...}`",crypto,100,standard,visible,0,"gopher{Better_not_send_state_secrets...}",,,
-License Key,challenge description,reverse-engineering,100,standard,visible,0,"gopher{You_got_it!}",,,
-challenge3,challenge description,category3,100,dynamic,visible,0,"flag1,flag2,flag3","tag1,tag2,tag3","hint1,hint2,hint3","{""initial"":100, ""minimum"":10, ""decay"":10}"
-challenge4,challenge description,category4,500,dynamic,visible,0,"flag1,flag2,flag3","tag1,tag2,tag3","hint1,hint2,hint3","{""initial"":500, ""minimum"":100, ""decay"":50}"
+License Key,Find the license key that passes this check.,reverse-engineering,200,standard,visible,0,"gopher{You_got_it!}",,,
+Blog 1,Find three flags on this blog!,web,50,standard,visible,0,"gopher{don't_hide_secrets_in_comments}",,,
+Blog 2,Find three flags on this blog!,web,150,standard,visible,0,"gopher{leaky_urls}",,,
+Blog 3,Find three flags on this blog!,web,200,standard,visible,0,"gopher{always_check_the_headers}",,,
+Deception,Find the flag in this file.,forensics,100,standard,visible,0,"gopher{file_extensions_are_fake!}",,,
+Addition Mistake,Try to make this program give you the flag!,binary-exploit,100,standard,visible,0,"gopher{watch_out_for_overflows}",,,
