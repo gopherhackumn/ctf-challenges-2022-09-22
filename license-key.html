@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>License Key</title>
+    <style type="text/css">
+      body,
+      html {
+        background: #eee;
+        font-family: sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      #form {
+        max-width: 400px;
+        margin: auto;
+      }
+
+      #form input[type="text"] {
+        width: 100%;
+        font-size: 2rem;
+        padding: 15px;
+        border: none;
+        outline: none;
+        display: block;
+        box-sizing: border-box;
+      }
+
+      #form input[type="submit"] {
+        width: 100%;
+        border: none;
+        padding: 15px;
+        background-color: #2c8;
+        display: block;
+        box-sizing: border-box;
+      }
+
+      #form input[type="submit"]:hover {
+        background-color: #4d8;
+      }
+
+      #form input[type="submit"]:active {
+        background-color: #2a8;
+      }
+
+      #verdict.correct {
+        color: #192;
+      }
+
+      #verdict.incorrect {
+        color: #912;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="form">
+      <input
+        type="text"
+        id="input"
+        placeholder="Enter a license key..."
+        autocomplete="off"
+        autofocus
+      />
+
+      <input type="submit" value="Submit!" />
+
+      <p id="verdict"></p>
+    </form>
+
+    <script type="text/javascript">
+      const formEl = document.getElementById("form");
+      const textEl = document.getElementById("input");
+      const verdictEl = document.getElementById("verdict");
+
+      // Validate the license key
+      const validate = (input) => {
+        if (!input.startsWith("gopher{") || !input.endsWith("}")) return;
+        input = input.replaceAll(/(^gopher{|}$)/g, "");
+
+        const pieces = input.split("_");
+        if (pieces.length != 3) return false;
+
+        const first = pieces[0];
+        for (let x = 0; x < first.length; x++) {
+          const y = first.charCodeAt(x);
+          if (y != 89 + 30 * x - 8 * x * x) return false;
+        }
+
+        const second = pieces[1];
+        if (second.charCodeAt(0) - first.charCodeAt(0) != 14) return false;
+        if (second.charCodeAt(1) != first.charCodeAt(1)) return false;
+        if (second.charCodeAt(2) - first.charCodeAt(2) != -1) return false;
+
+        const third = pieces[2];
+        if (third != "\x69\x74\x21") return false;
+
+        return true;
+      };
+
+      // Connect form elements
+      formEl.addEventListener("submit", (evt) => {
+        const input = textEl.value;
+
+        if (validate(input)) {
+          verdictEl.className = "correct";
+          verdictEl.innerText = "Correct!";
+        } else {
+          verdictEl.className = "incorrect";
+          verdictEl.innerText = "Wrong...";
+        }
+
+        evt.preventDefault();
+        return false;
+      });
+    </script>
+  </body>
+</html>
