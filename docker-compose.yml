@@ -20,7 +20,7 @@ services:
 
   pwn:
     build: pwn
-    ports: ["5010:5010"]
+    ports: ["5010:5010", "5020:5020"]
     restart: always
 
 networks:
