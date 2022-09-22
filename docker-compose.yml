@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  blog:
+    build: blog
+    networks: [all]
+    expose: [8000]
+
+  nginx:
+    build: nginx
+    links: [blog]
+    depends_on: [blog]
+    ports: ["5000:80"]
+    networks: [all]
+    volumes:
+      - ./nginx/server:/etc/nginx/conf.d/default.conf
+      - ./nginx/license-key.min.html:/usr/share/nginx/html/license-key.min.html
+
+  pwn:
+    build: pwn
+    ports: ["5010:5010"]
+
+networks:
+  all:
+

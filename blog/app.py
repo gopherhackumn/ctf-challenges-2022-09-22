@@ -18,7 +18,7 @@ def index():
         <p>welcome to my blog</p>
 
         <ul>
-            <li><a href="/post/2">first post</a></li>
+            <li><a href="./post/2">first post</a></li>
         </ul>
 
         <!-- flag #1 is gopher{don't_hide_secrets_in_comments} -->
